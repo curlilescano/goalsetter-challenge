@@ -12,9 +12,10 @@ import org.testng.asserts.SoftAssert;
 import pages.*;
 import status.UserInformation;
 
-public class SendGoalcardStepDefinitions {
+public class SendGoalCardStepDefinitions {
 
     public WebDriver driver;
+    private UserInformation userInformation;
     PageObjectManager pageObjectManager;
     WebDriverManagers webDriverManagers;
     HomePage homePage;
@@ -22,9 +23,8 @@ public class SendGoalcardStepDefinitions {
     GoalCardCustomizePage goalCardCustomizePage;
     PurchasePage purchasePage;
     PurchaseSuccessPage purchaseSuccessPage;
-    private UserInformation userInformation;
 
-    public SendGoalcardStepDefinitions(UserInformation userInformation) {
+    public SendGoalCardStepDefinitions(UserInformation userInformation) {
         this.userInformation = userInformation;
     }
 
