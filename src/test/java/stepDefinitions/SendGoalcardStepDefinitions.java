@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 
-import config.Configuration;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,8 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 import pages.*;
 import status.UserInformation;
+import utils.ExternalConfiguration;
 
-public class SendGoalCardStepDefinitions {
+public class SendGoalcardStepDefinitions {
 
     public WebDriver driver;
     private UserInformation userInformation;
@@ -23,8 +23,9 @@ public class SendGoalCardStepDefinitions {
     GoalCardCustomizePage goalCardCustomizePage;
     PurchasePage purchasePage;
     PurchaseSuccessPage purchaseSuccessPage;
+    ExternalConfiguration externalConfiguration;
 
-    public SendGoalCardStepDefinitions(UserInformation userInformation) {
+    public SendGoalcardStepDefinitions(UserInformation userInformation) {
         this.userInformation = userInformation;
     }
 
@@ -32,13 +33,14 @@ public class SendGoalCardStepDefinitions {
     @Given("^I go to kyle3080 main page$")
     public void iGoToKyle3080MainPage() {
         webDriverManagers = new WebDriverManagers();
+        externalConfiguration = new ExternalConfiguration();
         driver = webDriverManagers.getDriver();
-        pageObjectManager = new PageObjectManager(driver);
-        driver.get(Configuration.getURL());
+        driver.get(externalConfiguration.getExternalProperty("baseURL"));
     }
 
     @And("^I click on Give a GoalCard button$")
     public void iClickOnGiveGoalCard() {
+        pageObjectManager = new PageObjectManager(driver);
         homePage = pageObjectManager.getHomePage();
         homePage.clickOnGiveAGoldCard();
     }
